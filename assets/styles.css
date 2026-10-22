@@ -95,3 +95,82 @@
 
 /* Accessible values list: replaces the circular Core Values graphic per client feedback. */
 .values-list-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:30px}.value-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 8px 28px rgba(25,57,41,.05)}.value-card h3{margin:0 0 8px;color:var(--forest);font-family:var(--display);font-size:18px}.value-card p{margin:0;color:var(--muted);font-size:14px}@media(max-width:760px){.values-list-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.value-card{padding:17px}}@media(max-width:460px){.values-list-grid{grid-template-columns:1fr}}
+/* FIX: Uniform programme layout — prioritise content */
+.programme-block {
+  grid-template-columns: minmax(0, 1fr) 270px;
+  align-items: start;
+  gap: clamp(28px, 4vw, 56px);
+}
+
+/* Stop alternating sections from squeezing their text */
+.programme-reverse .programme-art,
+.programme-reverse .programme-content {
+  order: initial;
+}
+
+/* Keep the photo a consistent size */
+.programme-art.has-photo {
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: 4 / 5;
+}
+
+/* Let text and lists use the available width */
+.programme-content {
+  min-width: 0;
+  width: 100%;
+}
+
+.programme-content > p {
+  max-width: none;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.programme-details {
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.8fr);
+  gap: 24px;
+}
+
+.programme-details h4 {
+  font-size: 13px;
+}
+
+.programme-details ul {
+  font-size: 13px;
+  line-height: 1.85;
+}
+
+/* Tablet: retain readable content and a smaller photo */
+@media (max-width: 850px) {
+  .programme-block {
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: 24px;
+  }
+
+  .programme-details {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile: stack photo and content without shrinking either */
+@media (max-width: 560px) {
+  .programme-block {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .programme-art.has-photo {
+    aspect-ratio: 16 / 10;
+    width: 100%;
+  }
+
+  .programme-content > p {
+    font-size: 15px;
+  }
+
+  .programme-details ul {
+    font-size: 13px;
+  }
+}
